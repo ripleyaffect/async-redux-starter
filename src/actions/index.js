@@ -4,11 +4,14 @@ import { fetchTodos } from '../api'
 export const getTodos = () => {
   console.log('getTodos dispatched, calling api')
   // Fetch the todos with the api
-  const todos = fetchTodos()
-
-  return {
-    type: 'GET_TODOS',
-    todos,
+  return function(dispatch, getState) {
+    const todos = fetchTodos(function (todos) {
+        dispatch({
+          type: 'GET_TODOS',
+          todos,
+        })
+      }
+    )
   }
 }
 

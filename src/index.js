@@ -7,8 +7,11 @@ import createStore from './createStore'
 
 import './index.css'
 
+const store = createStore()
+store.dispatch({ type: 'TEST' })
+
 ReactDOM.render(
-  <Provider store={createStore()}>
+  <Provider store={store}>
     <Root />
   </Provider>,
   document.getElementById('root')

@@ -16,7 +16,11 @@ const defaultTodos = [
   }
 ]
 
-export const fetchTodos = () => {
+export const fetchTodos = (callback) => {
   console.log('Fetching todos from the api')
+  setTimeout(() => {
+    console.log('Finished fetching todos')
+    callback(defaultTodos)
+  }, 1000)
   return defaultTodos
 }
