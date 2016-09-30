@@ -1,17 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { decrement, increment } from '../actions'
+import TodoList from './TodoList'
 
 const App = ({ value, increment, decrement }) => {
   return <div className="app">
-    <h1>{value}</h1>
-    <button onClick={increment}>Increment</button>
-    <button onClick={decrement}>Decrement</button>
+    <TodoList />
   </div>
 }
 
 export default connect(
-  state => state,
-  { increment, decrement }
+  state => state
 )(App)

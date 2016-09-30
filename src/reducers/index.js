@@ -1,16 +1,21 @@
 import { combineReducers } from 'redux'
 
-export const value = (state=0, action) => {
+export const todos = (state=[], action) => {
   switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
-    case 'DECREMENT':
-      return state - 1
+    case 'GET_TODOS':
+      console.log('Adding new todos')
+      return state.concat(action.todos)
+    case 'MARK_TODO_COMPLETED':
+      return state.map(
+        todo => todo.id === action.id ? { ...todo, completed: true } : todo)
+    case 'MARK_TODO_NOT_COMPLETED':
+      return state.map(
+        todo => todo.id === action.id ? { ...todo, completed: false } : todo)
     default:
       return state
   }
 }
 
 export const app = combineReducers({
-  value
+  todos,
 })
